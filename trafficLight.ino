@@ -1,31 +1,43 @@
-int red = D6;
+int red = D4;
 int yellow = D3;
-int green = D1;
+int green = D2;
 
 
-int toggle(String led)
-
+int LED(String led)
 {
-    if (led == "red")
+    ///RED
+    if (led == "red" && digitalRead(red)==LOW )
     {
         digitalWrite(red, HIGH);
+      
     }
-    else if(led=="redOff"){
-             digitalWrite(red, LOW);
+    else if(led == "red" &&  digitalRead(red)==HIGH){
+        digitalWrite(red, LOW);
     }
-    }
-    else if (led == "yellow")
+    
+    
+    ///YELLOW
+      if (led == "yellow" && digitalRead(yellow)==LOW )
     {
         digitalWrite(yellow, HIGH);
-        delay(500);
+      
+    }
+    else if(led == "yellow" &&  digitalRead(yellow)==HIGH){
         digitalWrite(yellow, LOW);
     }
-    else if (led == "green")
+    
+    
+    ////GREEN
+     if (led == "green" && digitalRead(green)==LOW )
     {
         digitalWrite(green, HIGH);
-        delay(500);
+      
+    }
+    else if(led == "green" &&  digitalRead(green)==HIGH){
         digitalWrite(green, LOW);
     }
+    
+    // }
     return 0;
 }
 
@@ -36,11 +48,8 @@ void setup()
     pinMode(yellow, OUTPUT);
     pinMode(green, OUTPUT);
     
-    Particle.function("toggle", toggle);
     
-     digitalWrite(green, LOW);
-      digitalWrite(yellow, LOW);
-       digitalWrite(red, LOW);
+    Particle.function("LED", LED);
 }
 
 void loop() 
